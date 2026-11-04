@@ -1,8 +1,8 @@
 # Fluxo: Consulta e Apresentação de Perfis de Profissionais da Saúde
 
 > **Convenções:**
-> - **[MOCK]** — exemplo ilustrativo; não confirmado nas fontes públicas disponíveis.
-> - **[CONFIRMAR]** — requer validação com a equipe da Lacrei Saúde antes da publicação definitiva.
+> - **[MOCK]** - exemplo ilustrativo; não confirmado nas fontes públicas disponíveis.
+> - **[CONFIRMAR]** - requer validação com a equipe da Lacrei Saúde antes da publicação definitiva.
 
 ---
 
@@ -54,7 +54,7 @@ sequenceDiagram
             DB-->>API: retorna dados
             API->>Cache: armazena em cache [CONFIRMAR]
         end
-        API-->>FE: 200 OK — JSON
+        API-->>FE: 200 OK - JSON
         FE-->>U: renderiza lista de perfis
     end
 ```
@@ -93,7 +93,7 @@ sequenceDiagram
 | `especialidade` | string | não | Filtra por especialidade. **[MOCK]** |
 | `page` | integer | não | Número da página (paginação). **[MOCK]** |
 
-#### Resposta de sucesso — `200 OK`
+#### Resposta de sucesso - `200 OK`
 
 A resposta segue o padrão de paginação do Django REST Framework. **[MOCK]**
 
@@ -104,7 +104,7 @@ A resposta segue o padrão de paginação do Django REST Framework. **[MOCK]**
 | `previous` | string \| null | URL da página anterior, ou `null` se for a primeira. |
 | `results` | array | Lista de perfis retornados na página atual. |
 
-Cada objeto dentro de `results`: **[MOCK — confirmar campos reais]**
+Cada objeto dentro de `results`: **[MOCK - confirmar campos reais]**
 
 | Campo | Tipo | Descrição |
 |---|---|---|
@@ -135,7 +135,7 @@ Cada objeto dentro de `results`: **[MOCK — confirmar campos reais]**
 GET /api/v1/profissionais/?especialidade=psicologia 
 ```
 
-**Resposta — `200 OK`** [MOCK]
+**Resposta - `200 OK`** [MOCK]
 
 ```json
 {
@@ -175,7 +175,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 Accept: application/json
 ```
 
-**Resposta — `200 OK`** [MOCK]
+**Resposta - `200 OK`** [MOCK]
 
 ```json
 {
@@ -190,7 +190,7 @@ Accept: application/json
 
 ---
 
-### 4.3 Falha de autenticação — `401 Unauthorized`
+### 4.3 Falha de autenticação - `401 Unauthorized`
 
 **Requisição sem token**
 
@@ -209,7 +209,7 @@ Accept: application/json
 
 ---
 
-### 4.4 Parâmetro inválido — `400 Bad Request`
+### 4.4 Parâmetro inválido - `400 Bad Request`
 
 **Requisição com valor inválido no parâmetro `page`**
 
@@ -229,7 +229,7 @@ Accept: application/json
 
 ---
 
-### 4.5 Recurso não encontrado — `404 Not Found`
+### 4.5 Recurso não encontrado - `404 Not Found`
 
 **Requisição com `id` inexistente**
 
@@ -253,7 +253,7 @@ Accept: application/json
 
 ### Dados pessoais e LGPD
 
-Os dados retornados neste fluxo referem-se ao **perfil público** da pessoa profissional — nome social, especialidade e registro profissional — e não incluem dados clínicos ou de saúde da pessoa usuária. Ainda assim, a LGPD se aplica ao tratamento dessas informações.
+Os dados retornados neste fluxo referem-se ao **perfil público** da pessoa profissional - nome social, especialidade e registro profissional - e não incluem dados clínicos ou de saúde da pessoa usuária. Ainda assim, a LGPD se aplica ao tratamento dessas informações.
 
 A Lei Geral de Proteção de Dados (Lei nº 13.709/2018) classifica **dados de saúde** como dados sensíveis, exigindo atenção redobrada no tratamento.
 
@@ -279,28 +279,28 @@ A Lei Geral de Proteção de Dados (Lei nº 13.709/2018) classifica **dados de s
 
 | Termo | Definição |
 |---|---|
-| **API** | Interface de Programação de Aplicações — conjunto de regras que permite a comunicação entre sistemas. |
+| **API** | Interface de Programação de Aplicações - conjunto de regras que permite a comunicação entre sistemas. |
 | **Bearer token** | Credencial de acesso enviada no cabeçalho `Authorization` para autenticar uma requisição HTTP. |
-| **DRF** | Django REST Framework — biblioteca Python para construção de APIs REST sobre o Django. |
+| **DRF** | Django REST Framework - biblioteca Python para construção de APIs REST sobre o Django. |
 | **ElastiCache** | Serviço gerenciado da AWS para cache em memória; na Lacrei Saúde, utiliza o motor Valkey. **[CONFIRMAR]** |
 | **HTTPS** | Versão segura do protocolo HTTP, com tráfego criptografado via TLS. |
 | **HttpOnly** | Atributo de cookie que impede seu acesso via JavaScript, mitigando ataques XSS. |
-| **JWT** | JSON Web Token — padrão para transmissão segura de informações entre partes como objeto JSON assinado. |
-| **LGPD** | Lei Geral de Proteção de Dados (Lei nº 13.709/2018) — legislação brasileira que regula o tratamento de dados pessoais. |
+| **JWT** | JSON Web Token - padrão para transmissão segura de informações entre partes como objeto JSON assinado. |
+| **LGPD** | Lei Geral de Proteção de Dados (Lei nº 13.709/2018) - legislação brasileira que regula o tratamento de dados pessoais. |
 | **Mock** | Exemplo ilustrativo criado para fins de documentação; não representa o comportamento real confirmado do sistema. |
 | **Next.js** | Framework React para aplicações web com suporte a renderização no servidor (SSR) e geração estática (SSG). |
 | **PostgreSQL** | Sistema de gerenciamento de banco de dados relacional de código aberto utilizado no Back-end da Lacrei Saúde. |
-| **SSR** | Server-Side Rendering — técnica em que o HTML da página é gerado no servidor a cada requisição. |
-| **UUID** | Universally Unique Identifier — identificador único de 128 bits no formato `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. |
+| **SSR** | Server-Side Rendering - técnica em que o HTML da página é gerado no servidor a cada requisição. |
+| **UUID** | Universally Unique Identifier - identificador único de 128 bits no formato `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. |
 | **Valkey** | Motor de cache em memória utilizado pelo Amazon ElastiCache na Lacrei Saúde. **[CONFIRMAR]** |
 
 ### Fontes consultadas
 
-- [Django REST Framework — documentação oficial](https://www.django-rest-framework.org/)
-- [Next.js — documentação oficial](https://nextjs.org/docs)
-- [TypeScript — documentação oficial](https://www.typescriptlang.org/docs/)
-- [Mermaid — documentação oficial](https://mermaid.js.org/intro/)
-- [LGPD — Lei nº 13.709/2018](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm)
+- [Django REST Framework - documentação oficial](https://www.django-rest-framework.org/)
+- [Next.js - documentação oficial](https://nextjs.org/docs)
+- [TypeScript - documentação oficial](https://www.typescriptlang.org/docs/)
+- [Mermaid - documentação oficial](https://mermaid.js.org/intro/)
+- [LGPD - Lei nº 13.709/2018](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm)
 
 ### Pontos pendentes de validação
 
@@ -309,7 +309,7 @@ Os itens abaixo precisam ser confirmados com a equipe de desenvolvimento da Lacr
 - [ ] Rota exata e versão da API para listagem e detalhe de profissionais.
 - [ ] Campos retornados em cada endpoint (esquema completo de resposta).
 - [ ] Mecanismo de autenticação em uso (JWT, sessão, OAuth).
-- [ ] Regras de autorização — quais perfis podem acessar quais recursos.
+- [ ] Regras de autorização - quais perfis podem acessar quais recursos.
 - [ ] Uso e configuração do Amazon ElastiCache (Valkey) neste fluxo.
 - [ ] Política de retenção de dados e fluxo de consentimento (LGPD).
 - [ ] URLs dos repositórios públicos (`lacrei-api`, `lacrei-models`, `lacrei-migrations`).
